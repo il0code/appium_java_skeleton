@@ -4,8 +4,6 @@ import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
 import pages.ResultPage;
@@ -36,13 +34,7 @@ public class BaseClass {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
-//    @Test
-//    public void sampleTest(){
-//        System.out.println("Test");
-//    }
 
     @Test(priority = 1)
     public void openRootPage() {
@@ -58,11 +50,11 @@ public class BaseClass {
         RootPage rootPage = new RootPage(appiumDriver);
         rootPage.enterSearchString("Garmin Venu 2 black/slate");
         rootPage.pressSearch();
-        assert rootPage.getTitle().equals ("Garmin Venu 2 black/slate" + " Geizhals Österreich");
+        assert rootPage.getTitle().equals("Garmin Venu 2 black/slate" + " Geizhals Österreich");
     }
 
     @Test(priority = 3)
-    public void checkResults () {
+    public void checkResults() {
         ResultPage resultPagePage = new ResultPage(appiumDriver, "Garmin Venu 2 black/slate");
         resultPagePage.sortByCheapest();
         Float price = resultPagePage.getCheapestPrice();

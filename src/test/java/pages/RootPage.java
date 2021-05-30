@@ -11,21 +11,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class RootPage extends pages.BasePOM {
-    @FindBy(id="fs")
+    @FindBy(id = "fs")
     MobileElement search_field;
 
-    @FindBy(id="gh_suchen_bt_i")
+    @FindBy(id = "gh_suchen_bt_i")
     MobileElement search_button;
 
     public RootPage(AppiumDriver appiumDriver) {
         this.appiumDriver = appiumDriver;
         PageFactory.initElements(new AppiumFieldDecorator(appiumDriver, Duration.ofSeconds(20L)), this);
-
     }
-
 
     public void enterSearchString(String searchitem) {
         search_field.sendKeys(searchitem);
@@ -44,14 +41,5 @@ public class RootPage extends pages.BasePOM {
         WebDriverWait wait = new WebDriverWait(appiumDriver, 20L);
         wait.until(ExpectedConditions.elementToBeClickable(acceptBtn));
         appiumDriver.findElement(acceptBtn).click();
-    }
-
-    public void handleNotification() {
-        By gbclass = By.className("gb-form");
-        By button = By.id("btn btn-secondary gb-push-denied");
-        WebDriverWait wait = new WebDriverWait(appiumDriver,20L);
-        wait.until(ExpectedConditions.visibilityOf(appiumDriver.findElement(gbclass)));
-        appiumDriver.findElement(button).click();
-
     }
 }
